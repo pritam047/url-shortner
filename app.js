@@ -2,14 +2,16 @@
 const express = require('express')
 const app = express()
 
+app.set('view engine', 'ejs')
+
 app.get('/', (req, res) => {
-	res.send('Hello World! - from codedamn')
+	res.render('index', { myVariable: 'My name is Pritam!' })
 })
 
-app.get('/short', (req, res) => {
-	res.send('Hello from short')
-})
-
-app.listen(process.env.PUBLIC_PORT, () => {
-	console.log('Server started')
+// app.get('/short', (req, res) => {
+// 	res.send('Hello from short')
+// })
+let PORT = process.env.PUBLIC_PORT || 8081; 
+app.listen(PORT, () => {
+	console.log(`Server running on port ${PORT}`)
 })
